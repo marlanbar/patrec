@@ -18,16 +18,17 @@ subplot(2,1,1)       % add first plot in 2 x 1 grid
 surf(x1,x2,F); hold on;
 surf(x1,x2,G); hold off;
 caxis([min(F(:))-.5*range(F(:)),max(F(:))]);
-caxis([min(G(:))-.5*range(G(:)),max(G(:))]);
-axis([-3 3 -3 3 0 .4])
+axis([-3 3 -3 3 0 .4]);
 xlabel('x1'); ylabel('x2'); zlabel('Probability Density');
-title('Probability Density')
+title('Probability Density');
 
 subplot(2,1,2)       % add second plot in 2 x 1 grid
-contourf(x1, x2, G, 5, '--'); hold on;
-contourf(x1, x2, F, 5, '--'); hold off;
-caxis([min(F(:))-.5*range(F(:)),max(F(:))]);
+
+% Plot
+contour(x1, x2, F, 'LevelList', 100, 'LineWidth', 0.5); hold on;
+contour(x1, x2, G, 'LevelList', 100, 'LineWidth', 0.5); 
 caxis([min(G(:))-.5*range(G(:)),max(G(:))]);
-axis([-6 6 -6 6])
+axis([-3 3 -3 3]);
 xlabel('x1'); ylabel('x2');
-title('Contour')
+cb = colorbar('eastoutside');
+title('Contour');
